@@ -142,7 +142,7 @@
             z-index: 1;
         }
 
-        /* Profile Image Styles */
+        /* Profile Image Styles - تضمین قرارگیری صحیح در دایره */
         .hero-image {
             flex-shrink: 0;
             width: 280px;
@@ -160,10 +160,12 @@
             border-color: #d97706;
         }
 
+        /* تنظیم دقیق عکس برای پر کردن دایره بدون اعوجاج و حفظ چهره در مرکز */
         .hero-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            object-position: center 25% !important; /* تنظیم موقعیت عمودی برای نمایش بهتر چهره */
             display: block;
         }
 
@@ -651,13 +653,26 @@
             background: #f1f5f9;
         }
 
+        /* Certification image: view-only, no save / no drag */
         #modal-body img {
             max-width: 100%;
             max-height: 90vh;
             object-fit: contain;
             display: block;
+
+            /* Prevent image saving, dragging and selecting */
+            pointer-events: none;
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
         }
 
+        /* PDF iframe: hide toolbar so download button is not shown in the embedded viewer */
         #modal-body iframe {
             width: 85vw;
             height: 90vh;
@@ -880,20 +895,18 @@
     <!-- Hero Section -->
     <section id="hero">
         <div class="hero-content">
-            <!-- Placeholder for Profile Image. Save your photo as 'profile.jpg' in the same folder. -->
+            <!-- Profile image scaled to fit inside the circular frame -->
             <div class="hero-image">
-                <img src="Nik1.jpg" alt="Dr. Bagher Nikoufar" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'280\' height=\'280\' viewBox=\'0 0 280 280\'><rect fill=\'%23e2e8f0\' width=\'280\' height=\'280\'/><text fill=\'%2364748b\' font-family=\'sans-serif\' font-size=\'16\' x=\'50%\' y=\'50%\' text-anchor=\'middle\'>Profile Photo</text></svg>'">
+                <img src="Nik1.jpg" alt="Dr. Bagher Nikoufar"
+                     onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'280\' height=\'280\' viewBox=\'0 0 280 280\'><rect fill=\'%23e2e8f0\' width=\'280\' height=\'280\'/><text fill=\'%2364748b\' font-family=\'sans-serif\' font-size=\'16\' x=\'50%\' y=\'50%\' text-anchor=\'middle\'>Profile Photo</text></svg>'">
             </div>
             <div class="hero-text">
                 <h1>Dr. Bagher Nikoufar</h1>
-                <!-- تغییر کلمه Expert به Specialist و تغییر رنگ به قرمز ملایم -->
                 <p class="title">Water Resources Engineer | AI & Data Science Researcher | Dam & Hydropower Operations Specialist</p>
-                <!-- تنظیم خطوط از دو طرف، خط کشی و تغییر عدد 24 به 25 -->
                 <p class="tagline">
                     Bridging 25+ years of frontline engineering experience in water infrastructure with advanced Artificial Intelligence, Machine Learning, and Uncertainty Modeling to build climate-resilient water management systems.
                 </p>
                 <div class="hero-buttons">
-                    <!-- Linked to the actual PDF file provided -->
                     <a href="CV-BN.pdf" download class="btn btn-primary">Download Full CV (PDF)</a>
                     <a href="#contact" class="btn btn-outline">Get in Touch</a>
                 </div>
@@ -908,15 +921,13 @@
             <div class="about-text">
                 <p>I am a water resources engineer with a PhD in Civil Engineering – Water Resources Management from the University of Tabriz. For over two decades, I have been at the forefront of water infrastructure management at the East Azerbaijan Regional Water Company (Ministry of Energy, Iran), currently serving as the <strong>Head of Operation and Maintenance of Dams and Hydropower Plants</strong>.</p>
                 <p>My career is defined by a dual commitment: managing large-scale physical water systems (dams, hydropower, water/wastewater treatment facilities) and pioneering the use of <strong>Artificial Intelligence and data-driven decision support systems</strong> to optimize them. I lead a 75-person department, overseeing provincial dam operations, instrumentation, rehabilitation, and water allocation under severe drought conditions.</p>
-                <p>Driven by the need to solve complex, real-world problems, my research focuses on integrating <strong>Z-Number theory, Fuzzy Logic, LSTM networks, and Machine Learning</strong> to address uncertainty in reservoir operation and climate adaptation. I am actively seeking global opportunities (such as the UK Global Talent visa) to apply my unique blend of practical engineering leadership and advanced AI research to international water challenges.</p>
+                <p>Driven by the need to solve complex, real-world problems, my research focuses on integrating <strong>Z-Number theory, Fuzzy Logic, LSTM networks, and Machine Learning</strong> to address uncertainty in reservoir operation and climate adaptation. I am actively seeking global opportunities to apply my unique blend of practical engineering leadership and advanced AI research to international water challenges.</p>
             </div>
-            <!-- تغییر رنگ پس‌زمینه باکس به صورتی ملایم -->
             <div class="highlight-box">
                 <h4>Core Strengths for Global Impact:</h4>
                 <ul>
                     <li><strong>Engineering Leadership:</strong> 25+ years managing dam safety, hydropower, and water treatment operations.</li>
                     <li><strong>AI & Data Science:</strong> Proficient in Python, LSTM, ML, Z-Numbers, and developing AI-based decision-support tools.</li>
-                    <!-- اصلاح متن و پرانتزها به صورت یک خط -->
                     <li><strong>Research Excellence:</strong> Published in top-tier journals (e.g., <em>Journal of Hydrology</em>), author of an upcoming book on AI and Z-Numbers.</li>
                     <li><strong>Global Readiness:</strong> Advanced English, international certifications (University of Helsinki, DHI, ITC), and experience collaborating with UNESCO and Australian universities.</li>
                 </ul>
@@ -977,7 +988,6 @@
             
             <!-- Left Column: Research & Technical Skills -->
             <div>
-                <!-- تغییر رنگ پس‌زمینه کارت به سبز کم رنگ -->
                 <div class="card" style="margin-bottom: 2rem; background-color: #dcfce7;">
                     <h3>Research Focus & Publications</h3>
                     <p style="margin-bottom: 1rem; color: var(--text-light); font-size: 0.95rem;">
@@ -1038,11 +1048,15 @@
                     </div>
                 </div>
 
-                <!-- تغییر رنگ پس‌زمینه کارت به صورتی کم رنگ -->
                 <div class="card" style="background-color: #fce7f3;">
                     <h3>Key Certifications</h3>
                     <ul style="list-style: none; color: var(--text-light); font-size: 0.9rem;">
                         
+                        <li class="cert-item" onclick="openModal('6.pdf', 'pdf')">
+                            <strong>CS50 Certificate in Programming with Python</strong> – Harvard University, Cambridge, Massachusetts
+                            <span class="view-icon">👁️ View</span>
+                        </li>
+
                         <li class="cert-item" onclick="openModal('1.jpg', 'image')">
                             <strong>Elements of AI (2 ECTS)</strong> – University of Helsinki & MinnaLearn (2025)
                             <span class="view-icon">👁️ View</span>
@@ -1063,7 +1077,7 @@
                             <span class="view-icon">👁️ View</span>
                         </li>
                         
-                        <li class="cert-item" onclick="openModal('5.JPG', 'image')">
+                        <li class="cert-item" onclick="openModal('5.jpg', 'image')">
                             <strong>MIKE 11 HD & Reservoir Modelling</strong> – DHI, Denmark (2005-2006)
                             <span class="view-icon">👁️ View</span>
                         </li>
@@ -1134,39 +1148,36 @@
             </p>
             
             <div class="gallery-grid">
-                <!-- Instructions for the user: Replace the src URLs with your actual image file names. 
-                     Ensure images are compressed (e.g., use tools like TinyPNG) before uploading. -->
-                
                 <div class="gallery-item">
-                    <img src="photo1.jpg" alt="Dam instrumentation inspection" loading="lazy">
+                    <img src="11.jpg" alt="Dam instrumentation inspection" loading="lazy">
                     <div class="gallery-caption">Dam Instrumentation & Safety Review</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="photo2.jpg" alt="Hydropower plant maintenance" loading="lazy">
+                    <img src="22.jpg" alt="Hydropower plant maintenance" loading="lazy">
                     <div class="gallery-caption">Hydropower Plant Maintenance</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="photo3.jpg" alt="Water treatment facility check" loading="lazy">
+                    <img src="33.jpg" alt="Water treatment facility check" loading="lazy">
                     <div class="gallery-caption">Water & Wastewater Facility Inspection</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="photo4.jpg" alt="Site visit with engineering team" loading="lazy">
+                    <img src="44.jpg" alt="Site visit with engineering team" loading="lazy">
                     <div class="gallery-caption">Engineering Team Site Visit</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="photo5.jpg" alt="Reservoir operation check" loading="lazy">
+                    <img src="55.jpg" alt="Reservoir operation check" loading="lazy">
                     <div class="gallery-caption">Reservoir Operation & Monitoring</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="photo6.jpg" alt="Dam gate and valve inspection" loading="lazy">
+                    <img src="66.jpg" alt="Dam gate and valve inspection" loading="lazy">
                     <div class="gallery-caption">Dam Gate & Valve Control Systems</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="photo7.jpg" alt="Pump station inspection" loading="lazy">
+                    <img src="77.jpg" alt="Pump station inspection" loading="lazy">
                     <div class="gallery-caption">Pump Station & Conveyance Networks</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="photo8.jpg" alt="Tunnel and penstock inspection" loading="lazy">
+                    <img src="88.jpg" alt="Tunnel and penstock inspection" loading="lazy">
                     <div class="gallery-caption">Tunnel & Penstock Inspection</div>
                 </div>
             </div>
@@ -1177,7 +1188,6 @@
     <section id="contact">
         <div class="container">
             <h2>Let's Collaborate on Global Water Challenges</h2>
-            <!-- Updated text: Removed (UK) and added DSS collaboration -->
             <p>I am actively seeking postdoctoral research positions, global talent opportunities, and international collaborations in AI-driven water management, climate resilience, smart infrastructure, and modern and optimal management and operation of water facilities based on DSS.</p>
             
             <div class="contact-links">
@@ -1282,7 +1292,6 @@
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
-                // Using 150px offset to account for the fixed navbar
                 if (window.scrollY >= (sectionTop - 150)) {
                     current = section.getAttribute('id');
                 }
@@ -1298,16 +1307,12 @@
 
         // --- 4. Attach Click Sound and Handle Active Class ---
         navLinks.forEach(link => {
-            // When hovering over a new link, remove active class from all links
-            // This makes the previous red color return to normal before the next click
             link.addEventListener('mouseenter', function() {
                 navLinks.forEach(l => l.classList.remove('active'));
             });
 
             link.addEventListener('click', function() {
                 playClickSound();
-                
-                // Immediately set active class on click for better UX
                 navLinks.forEach(l => l.classList.remove('active'));
                 this.classList.add('active');
             });
@@ -1315,6 +1320,25 @@
 
         // Trigger scroll event on load to set the correct active link
         window.dispatchEvent(new Event('scroll'));
+
+        // --- 5. Prevent right-click save & drag inside certification modal ---
+        const certModal = document.getElementById('cert-modal');
+        const modalBodyEl = document.getElementById('modal-body');
+
+        certModal.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        modalBodyEl.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+        });
+
+        // Also block right-click on certification list items (defensive)
+        document.querySelectorAll('.cert-item').forEach(function(item) {
+            item.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+            });
+        });
     </script>
 
 </body>
